@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package glovory;
+
+// Auth services
+service Auth {
+  rpc Login (LoginRequest) returns (LoginResponse);
+}
+
+message LoginRequest {
+  string username = 10;
+  string password = 20;
+}
+
+message UserModel {
+  string id = 10;
+  string username = 20;
+  string email = 30;
+  string name = 40;
+}
+
+message LoginResponse {
+  UserModel user = 10;
+}
+
+// Address services
+service Address {
+  rpc List (AddressListRequest) returns (AddressListResponse);
+}
+
+message AddressModel {
+  string id = 10;
+  string address = 20;
+  string city = 30;
+}
+
+message AddressListRequest {
+  string user_id = 10;
+}
+
+message AddressListResponse {
+  repeated AddressModel addresses = 10;
+}
